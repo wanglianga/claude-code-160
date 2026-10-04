@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: hdms-backend
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/hdms}
+    username: ${DB_USER:hdms}
+    password: ${DB_PASS:hdms123}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: Asia/Shanghai
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+
+app:
+  jwt-secret: ${JWT_SECRET:hdms-secret-key-please-change-in-production-0123456789abcdef}
+  jwt-expire-minutes: 720
+  seed-demo-data: ${SEED_DEMO_DATA:true}
+  disinfection-gap-minutes: ${DISINFECTION_GAP_MINUTES:30}
+
+logging:
+  level:
+    org.hibernate.SQL: warn
